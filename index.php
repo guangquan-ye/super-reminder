@@ -1,12 +1,14 @@
 <?php
 require_once "./Class/User.php";
+require_once "./Class/Todo.php";
 session_start();
 
 $user = new User();
+$todo = new Todo();
 
 
 if (isset($_POST["register"])) {
-    
+
     $password = $_POST["signUpPwd"];
     $passwordConf = $_POST["signUpPwdConf"];
     $login = $_POST["signUpLogin"];
@@ -51,6 +53,10 @@ if(isset($_POST["login"])){
             echo "Welcome";
             die();
         }
+        else{
+            echo "Wrong informations";
+            die();
+        }
     }
     else{
         echo "empty of wrong informations";
@@ -58,6 +64,12 @@ if(isset($_POST["login"])){
     }
   };
 
+  if(isset($_POST["addTodo"])){
+
+    $title = $_POST["todoTitle"];
+    $user_id = $_SESSION["user"]["id"];
+    $todo->addTodo($title, $user_id);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +77,12 @@ if(isset($_POST["login"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <script defer src="./script/header.js"></script>
     <script defer src="./script/auth.js"></script>
+    <script defer src="./script/todolist.js"></script>
+
     <title>Todolist</title>
 </head>
 
