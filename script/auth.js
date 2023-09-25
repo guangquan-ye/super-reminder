@@ -1,7 +1,8 @@
 const signUpDisplay = document.querySelector('#signUpDisplay');
 const signInDisplay = document.querySelector('#signInDisplay');
 
-signUpDisplay.addEventListener('click', () => {
+signUpDisplay.addEventListener('click', (ev) => {
+    ev.preventDefault();
 
     fetch('./inscription.html', {
         method: 'GET',
@@ -11,33 +12,55 @@ signUpDisplay.addEventListener('click', () => {
 
     }
     ).then((data) => {
-        
-        
-        document.querySelector('#formDisplayDiv').innerHTML = data;
-        const formData = new FormData(form);
-        fetch ("./index.php")
-        
+        const formDisplayDiv = document.querySelector('#formDisplayDiv');
+        formDisplayDiv.innerHTML = "";
+        formDisplayDiv.innerHTML = data;
+        const signUpBtn = document.querySelector('#signUpBtn');
+        signUpBtn.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            const signUpForm = document.querySelector('#signUpForm');
+            const formData = new FormData(signUpForm);
+            formData.append('register', "ok");
+            fetch('./index.php', {
+                method: 'POST',
+                body: formData
+            }).then((response) => {
+                return response.text();
+            }).then((data) => {
+                console.log(data);
+            });
+        });
+    })
+});
 
+signInDisplay.addEventListener('click', (ev) => {
+    ev.preventDefault();
 
-      
+    fetch('./connexion.html', {
+        method: 'GET',
+
+    }).then((response) => {
+        return response.text();
 
     }
-)});
-
-signInDisplay.addEventListener('click', () => {
-    
-        fetch('./connexion.html', {
-            method: 'GET',
-    
-        }).then((response) => {
-            return response.text();
-    
-        }
-        ).then((data) => {
-            document.querySelector('#formDisplayDiv').innerHTML = data;
-    
-        }
-        ).catch((error) => {
-            console.log(error);
-        }
-    )});
+    ).then((data) => {
+        const formDisplayDiv = document.querySelector('#formDisplayDiv');
+        formDisplayDiv.innerHTML = "";
+        formDisplayDiv.innerHTML = data;
+        const signInBtn = document.querySelector('#signInBtn');
+        signInBtn.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            const signInForm = document.querySelector('#signInForm');
+            const formData = new FormData(signInForm);
+            formData.append('login', "ok");
+            fetch('./index.php', {
+                method: 'POST',
+                body: formData
+            }).then((response) => {
+                return response.text();
+            }).then((data) => {
+                console.log(data);
+            });
+        });
+    })
+});
