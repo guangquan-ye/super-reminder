@@ -11,10 +11,10 @@ signUpDisplay.addEventListener('click', (ev) => {
         return response.text();
 
     }
-    ).then((data) => {
+    ).then((formDisplay) => {
         const formDisplayDiv = document.querySelector('#formDisplayDiv');
         formDisplayDiv.innerHTML = "";
-        formDisplayDiv.innerHTML = data;
+        formDisplayDiv.innerHTML = formDisplay;
         const signUpBtn = document.querySelector('#signUpBtn');
         signUpBtn.addEventListener('click', (ev) => {
             ev.preventDefault();
@@ -27,7 +27,9 @@ signUpDisplay.addEventListener('click', (ev) => {
             }).then((response) => {
                 return response.text();
             }).then((data) => {
-                console.log(data);
+                const msg = document.createElement('p');
+                msg.innerHTML = data;
+                formDisplayDiv.appendChild(msg);
             });
         });
     })
@@ -43,10 +45,10 @@ signInDisplay.addEventListener('click', (ev) => {
         return response.text();
 
     }
-    ).then((data) => {
+    ).then((formDisplay) => {
         const formDisplayDiv = document.querySelector('#formDisplayDiv');
         formDisplayDiv.innerHTML = "";
-        formDisplayDiv.innerHTML = data;
+        formDisplayDiv.innerHTML = formDisplay;
         const signInBtn = document.querySelector('#signInBtn');
         signInBtn.addEventListener('click', (ev) => {
             ev.preventDefault();
@@ -59,7 +61,10 @@ signInDisplay.addEventListener('click', (ev) => {
             }).then((response) => {
                 return response.text();
             }).then((data) => {
-                console.log(data);
+                const msg = document.createElement('p');
+                
+                msg.innerHTML = data;
+                formDisplayDiv.appendChild(msg);
             });
         });
     })

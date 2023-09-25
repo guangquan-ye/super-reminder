@@ -6,6 +6,7 @@ $user = new User();
 
 
 if (isset($_POST["register"])) {
+    
     $password = $_POST["signUpPwd"];
     $passwordConf = $_POST["signUpPwdConf"];
     $login = $_POST["signUpLogin"];
@@ -21,11 +22,13 @@ if (isset($_POST["register"])) {
             $user->register($specialLogin, $hashedPwd);
 
             echo "Succesfully Submit";
+            die();
         }   
         
     }
     else{
         echo "Pwd and confirm do not match";
+        die();
     }
 }
 
@@ -39,16 +42,19 @@ if(isset($_POST["login"])){
 
     $result = $user->ifExist($login);
 
-    if (password_verify($password, $result["password"])) {
-      $_SESSION["user"] = [
-          "id" => $result["id"],
-          "login" => $result["login"]
-      ];
-      echo "Welcome";
-     
-     }
+    if (is_array($result) && isset($result["password"])) {
+        if (password_verify($password, $result["password"])) {
+            $_SESSION["user"] = [
+                "id" => $result["id"],
+                "login" => $result["login"]
+            ];
+            echo "Welcome";
+            die();
+        }
+    }
     else{
-        echo "Wrong login or pwd" ;
+        echo "empty of wrong informations";
+        die();
     }
   };
 
@@ -68,9 +74,9 @@ if(isset($_POST["login"])){
     <h1>Welcome To my Todolist</h1>
 
     <div>
-        <form action="add.php" method="post">
+        <form action="" method="post">
             <input type="text" name="task" placeholder="Enter your task">
-            <input type="submit" value="Add">
+            <button id="addTaskBtn">Add Task</button>
         </form>
     </div>
 
