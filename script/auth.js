@@ -11,11 +11,16 @@ signUpDisplay.addEventListener('click', () => {
 
     }
     ).then((data) => {
+        
+        
         document.querySelector('#formDisplayDiv').innerHTML = data;
+        const formData = new FormData(form);
+        fetch ("./index.php")
+        
 
-    }
-    ).catch((error) => {
-        console.log(error);
+
+      
+
     }
 )});
 

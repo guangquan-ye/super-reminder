@@ -1,3 +1,15 @@
+<?php
+require_once "./Class/User.php";
+
+$user = new User();
+var_dump($user);
+
+if(isset($_POST["register"])){
+
+    $user->register($login, $password);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
