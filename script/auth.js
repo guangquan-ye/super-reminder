@@ -35,11 +35,11 @@ signUpBtn.addEventListener('click', (ev) => {
         const signUpMsg = document.querySelector('#signUpMsg');
         signUpMsg.innerHTML = "";
         signUpMsg.innerHTML = data;
-
+        if(data == "Succesfully Submitted") {
         setTimeout(function() {
             window.location.href = './index.php';
         }, 2000);
-
+    }
     });
 });
 
@@ -61,9 +61,11 @@ signInBtn.addEventListener('click', (ev) => {
         signInMsg.innerHTML = "";
         signInMsg.innerHTML = data;
 
-        setTimeout(function() {
-            window.location.href = './todo.php';
-        }, 2000);
+        if(data == "Welcome") {
+            setTimeout(function() {
+                window.location.href = './todo.php';
+            }, 2000);
+        }
 
     });
 });
