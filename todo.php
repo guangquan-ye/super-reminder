@@ -1,5 +1,25 @@
 <?php
+require_once "./Class/Todo.php";
+
 session_start();
+
+$todo = new Todo();
+
+if(isset($_POST["addTodo"])){
+
+    $title = $_POST["todoTitle"];
+    $user_id = $_SESSION["user"]["id"];
+    $todo->addTodo($title, $user_id);
+    die();
+  }
+
+if(isset($_GET["getTodos"])){
+    $user_id = $_SESSION["user"]["id"];
+    $getTask = $todo->getTodos($user_id);
+    return $getTask;
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

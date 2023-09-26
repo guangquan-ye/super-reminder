@@ -20,6 +20,15 @@ class Todo {
         ]);
     }
 
+    public function getTodos($user_id){
+        $select = $this->pdo->prepare("SELECT * FROM todo WHERE id_user = :id_user");
+        $select->execute([
+            ":id_user" => $user_id
+        ]);
+        $result = $select->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    }
+
 }
 
 ?>

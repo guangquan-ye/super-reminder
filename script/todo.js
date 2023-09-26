@@ -15,3 +15,16 @@ addTodoBtn.addEventListener('click', (ev) => {
        
     });
 });
+
+function getTodos (){
+    fetch('./todo.php?getTodos', {
+        
+    }).then((response) => {
+        return response.text();
+    }).then((data) => {
+        console.log(data);
+       
+    });
+}
+
+getTodos();

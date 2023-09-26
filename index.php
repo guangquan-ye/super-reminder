@@ -64,12 +64,6 @@ if(isset($_POST["login"])){
     }
   };
 
-  if(isset($_POST["addTodo"])){
-
-    $title = $_POST["todoTitle"];
-    $user_id = $_SESSION["user"]["id"];
-    $todo->addTodo($title, $user_id);
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,6 +72,7 @@ if(isset($_POST["login"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./style/style.css">
     <script defer src="./script/header.js"></script>
     <script defer src="./script/auth.js"></script>
@@ -87,15 +82,13 @@ if(isset($_POST["login"])){
 </head>
 
 <body>
-    <?php require_once "header.php" ?>
     <h1>Welcome To my Todolist</h1>
 
-    <div>
-        <form action="" method="post">
-            <input type="text" name="task" placeholder="Enter your task">
-            <button id="addTaskBtn">Add Task</button>
-        </form>
-    </div>
+    <a href="" id="signUpDisplay">Inscription</a>
+    <a href="" id="signInDisplay">Connexion</a>
+  </div>
+ 
+  <div id="formDisplayDiv"></div>
 
 </body>
 
