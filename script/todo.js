@@ -42,7 +42,7 @@ async function getTodos() {
         const titleDiv = document.createElement('div');
         titleDiv.className = "flex-1 min-w-0";
         const title = document.createElement('p');
-        title.className = "text-lg text-gray-500 truncate dark:text-gray-400";
+        title.className = "text-lg text-gray-600 truncate dark:text-gray-400";
         const checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         checkbox.className = "mr-5 w-6 h-6 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500";
@@ -97,7 +97,7 @@ async function getTodosDone() {
         const titleDiv = document.createElement('div');
         titleDiv.className = "flex-1 min-w-0";
         const title = document.createElement('p');
-        title.className = "text-lg text-gray-500 truncate dark:text-gray-400";
+        title.className = "text-lg font-bold text-gray-600 truncate dark:text-gray-400";
         const button = document.createElement('button');
         const img = document.createElement('img');
         img.className = "w-5 h-5";

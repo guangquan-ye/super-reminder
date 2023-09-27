@@ -21,7 +21,7 @@ class Todo {
     }
 
     public function getTodos($user_id){
-        $select = $this->pdo->prepare("SELECT * FROM todo WHERE id_user = :id_user AND iscompleted = 0");
+        $select = $this->pdo->prepare("SELECT * FROM todo WHERE id_user = :id_user AND iscompleted = 0 ORDER BY id DESC");
         $select->execute([
             ":id_user" => $user_id
         ]);
@@ -30,7 +30,7 @@ class Todo {
     }
 
     public function doneTodo($id_task){
-        $update = $this->pdo->prepare("UPDATE todo SET iscompleted = :iscompleted WHERE id = :id");
+        $update = $this->pdo->prepare("UPDATE todo SET iscompleted = :iscompleted WHERE id = :id ORDER BY id DESC");
         $update->execute([
             ":iscompleted" => 1,
             ":id" => $id_task
