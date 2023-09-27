@@ -80,7 +80,7 @@ async function getTodosDone() {
 
     doneList.innerHTML = '';
     const ul = document.createElement('ul');
-    ul.className = "mt-4 max-w-md";
+    ul.className = "mt-4";
 
     data.forEach((list) => {
         const li = document.createElement('li');

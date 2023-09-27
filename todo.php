@@ -63,15 +63,21 @@ if(isset($_POST["logOut"])){
 </head>
 
 <body>
+<div class=" flex flex-row justify-around align-center w-full">
     <div>
     <h2 class="mt-12 text-center text-4xl font-bold leading-9 tracking-tight text-black">My Todolist</h2>
+    </div>
+    <div class="flex justify-center align-center content-center">
     <form action="" method="post">
-        
-    <button name="logOut">Log out</button>
+    <button name="logOut" class="mt-14 text-1xl">Log out</button>
     </form>
+    </div>
+</div>
+
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <form method="post" id="addTodoForm">
     <p class="mt-12 text-center text-1xl  justify-center font-bold leading-9 tracking-tight text-sky-500" id="todoMsg"></p>
-        <div class="lg:w-3/5 relative mt-5 m-5 rounded-md shadow-sm">
+        <div class="lg:w-4/5 relative mt-5 m-5 rounded-md shadow-sm">
             <input type="text" name="todoTitle" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#f8e3ba] sm:text-sm sm:leading-6" placeholder="Faire les courses">
             <div class="absolute inset-y-0 right-0 flex items-center">
                 <button id="addTodoBtn" class="h-full rounded-md border-1  bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-[#f8e3ba] sm:text-sm">+</button>
@@ -84,7 +90,7 @@ if(isset($_POST["logOut"])){
 
     <p class="mt-6 ml-6 text-2xl font-bold leading-9 tracking-tight text-gray-800" >Finished</p>
     <div id="doneList"></div>
-    </div>
+</div>
 </body>
 
 </html>
