@@ -38,7 +38,7 @@ class Todo {
     }
     
     public function getDoneTodos($user_id){
-        $select = $this->pdo->prepare("SELECT * FROM todo WHERE id_user = :id_user AND iscompleted = 1");
+        $select = $this->pdo->prepare("SELECT * FROM todo WHERE id_user = :id_user AND iscompleted = 1 ORDER BY id DESC");
         $select->execute([
             ":id_user" => $user_id
         ]);
